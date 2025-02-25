@@ -1,67 +1,81 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prueba Formulario Web</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: rgb(185, 217, 134);
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-        }
-
-        .form-container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-width: 620px;
-            width: 100%;
-            text-align: center;
-            border: 3px solid rgb(67, 108, 59);
-        }
-
-        h1 {
-            color: rgb(67, 108, 59);
-            margin-bottom: 20px;
-        }
-
-        img {
-            width: 200px; /* Logo un poco más grande */
-            margin-bottom: 20px;
-        }
-
-        form {
-            margin-top: 20px;
-        }
-
-        @media (max-width: 600px) {
-            .form-container {
-                padding: 15px;
-            }
-
-            img {
-                width: 150px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página Web HINS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: rgb(185, 217, 134);
+      margin: 0;
+      padding: 0;
+      position: relative;
+      min-height: 100vh;
+    }
+    
+    /* Texto centrado en la página */
+    .center-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: rgb(67, 108, 59);
+    }
+    
+    /* Widget del formulario en la esquina inferior derecha */
+    .widget-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      max-width: 320px;
+      width: 100%;
+    }
+    
+    .form-container {
+      background-color: white;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border: 3px solid rgb(67, 108, 59);
+    }
+    
+    iframe {
+      width: 100%;
+      height: 480px;
+      border: none;
+    }
+    
+    @media (max-width: 600px) {
+      .widget-container {
+        bottom: 10px;
+        right: 10px;
+        max-width: 260px;
+      }
+      
+      iframe {
+        height: 360px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <!-- Texto centrado en la página -->
+  <div class="center-text">
+    <h1>Página Web HINS</h1>
+  </div>
+  
+  <!-- Widget del formulario en la esquina inferior derecha -->
+  <div class="widget-container">
     <div class="form-container">
-        <img src="HINS logo color.png" alt="Logo HINS">
-        <h1>Prueba Formulario Web</h1>
-        <!-- Preguntar al empleado: cuántas horas dedicó a cada proyecto hoy y qué tipo de tareas realizó -->
-        <!-- El formulario a continuación permite registrar la información y generar un informe mensual exportable a Excel -->
-        <iframe width="640px" height="480px" src="https://forms.office.com/Pages/ResponsePage.aspx?id=H9GLKbWY80CMg8cDSj523UpKrxKKY7BBqHICpMGVtDZUMlFYTERSWUVJWk8xTFhMMlNYQ01HVVExWS4u&embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen></iframe>
+      <iframe src="https://forms.office.com/Pages/ResponsePage.aspx?id=H9GLKbWY80CMg8cDSj523UpKrxKKY7BBqHICpMGVtDZUMlFYTERSWUVJWk8xTFhMMlNYQ01HVVExWS4u&embed=true" 
+              allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen>
+      </iframe>
     </div>
+  </div>
 </body>
 </html>
 
