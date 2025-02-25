@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Página Web HINS</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     body {
       font-family: 'Montserrat', sans-serif;
@@ -15,7 +15,17 @@
       min-height: 100vh;
     }
     
-    /* Texto centrado en la página */
+    /* Header con el logo */
+    .header {
+      text-align: center;
+      padding: 20px 0;
+    }
+    
+    .header .logo {
+      width: 200px;
+    }
+    
+    /* Texto central */
     .center-text {
       position: absolute;
       top: 50%;
@@ -25,57 +35,135 @@
       color: rgb(67, 108, 59);
     }
     
-    /* Widget del formulario en la esquina inferior derecha */
-    .widget-container {
+    /* Modal (pop-up) */
+    .modal {
+      display: none; /* Se oculta por defecto */
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 1000;
-      max-width: 320px;
+      z-index: 10000;
+      left: 0;
+      top: 0;
       width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
     }
     
-    .form-container {
-      background-color: white;
-      padding: 10px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 20px;
       border: 3px solid rgb(67, 108, 59);
+      width: 80%;
+      max-width: 640px;
+      border-radius: 10px;
+      position: relative;
     }
     
-    iframe {
+    .close-button {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      color: #aaa;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    
+    .form-container iframe {
       width: 100%;
       height: 480px;
       border: none;
     }
     
     @media (max-width: 600px) {
-      .widget-container {
-        bottom: 10px;
-        right: 10px;
-        max-width: 260px;
-      }
-      
-      iframe {
+      .form-container iframe {
         height: 360px;
       }
+    }
+    
+    /* Burbuja del widget en la esquina inferior derecha */
+    .bubble-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      text-align: center;
+      z-index: 1000;
+    }
+    
+    .bubble-label {
+      margin-bottom: 5px;
+      color: rgb(67, 108, 59);
+      font-weight: bold;
+    }
+    
+    .bubble {
+      width: 60px;
+      height: 60px;
+      background-color: rgb(67, 108, 59);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      font-size: 30px;
     }
   </style>
 </head>
 <body>
-  <!-- Texto centrado en la página -->
+  <!-- Header con el logo de HINS -->
+  <header class="header">
+    <img src="HINS logo color.png" alt="Logo HINS" class="logo" />
+  </header>
+  
+  <!-- Texto central -->
   <div class="center-text">
     <h1>Página Web HINS</h1>
   </div>
   
-  <!-- Widget del formulario en la esquina inferior derecha -->
-  <div class="widget-container">
-    <div class="form-container">
-      <iframe src="https://forms.office.com/Pages/ResponsePage.aspx?id=H9GLKbWY80CMg8cDSj523UpKrxKKY7BBqHICpMGVtDZUMlFYTERSWUVJWk8xTFhMMlNYQ01HVVExWS4u&embed=true" 
-              allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen>
-      </iframe>
+  <!-- Modal pop-up con el formulario -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span id="closeModal" class="close-button">&times;</span>
+      <div class="form-container">
+        <iframe 
+          src="https://forms.office.com/Pages/ResponsePage.aspx?id=H9GLKbWY80CMg8cDSj523UpKrxKKY7BBqHICpMGVtDZUMlFYTERSWUVJWk8xTFhMMlNYQ01HVVExWS4u&embed=true" 
+          allowfullscreen 
+          webkitallowfullscreen 
+          mozallowfullscreen 
+          msallowfullscreen>
+        </iframe>
+      </div>
     </div>
   </div>
+  
+  <!-- Burbuja widget en la esquina inferior derecha -->
+  <div class="bubble-container">
+    <div class="bubble-label">¿Tu empresa está lista para el futuro?</div>
+    <div class="bubble" id="openModal">+</div>
+  </div>
+  
+  <script>
+    // Abrir el modal al hacer click en la burbuja
+    const openModalButton = document.getElementById('openModal');
+    const modal = document.getElementById('modal');
+    const closeModalButton = document.getElementById('closeModal');
+    
+    openModalButton.addEventListener('click', function() {
+      modal.style.display = 'block';
+    });
+    
+    closeModalButton.addEventListener('click', function() {
+      modal.style.display = 'none';
+    });
+    
+    // Cerrar el modal al hacer click fuera del contenido
+    window.addEventListener('click', function(event) {
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>
 
